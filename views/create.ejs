@@ -6,22 +6,56 @@
 <body>
 <br>
 
-<p id="test123"></p>
 
-<form>
-    Claim Number:<br>
-    <input id="caseID" type="text" name="caseID"><br>
-    First Name:<br>
-    <input id="firstname" type="text" name="firstname"><br>
-    Last Name:<br>
-    <input id="lastname" type="text" name="lastname"><br>
-    Email:<br>
-    <input id="email" type="text" name="email"><br>
-    Date:<br>
-    <input id="date" type="text" name="date"><br>
-    <input type="submit" value="Submit" id="submitBtn">
-</form>
+<div id="pagewrapper">
+    <p id="test123"></p>
 
+    <form id="createform">
+        Claim Number:<br>
+        <input id="claimnumber" type="text" name="claimnumber"><br>
+        First Name:<br>
+        <input id="firstname" type="text" name="firstname"><br>
+        Last Name:<br>
+        <input id="lastname" type="text" name="lastname"><br>
+        Email:<br>
+        <input id="email" type="text" name="email"><br>
+        Date:<br>
+        <input id="date" type="text" name="date"><br>
+        <input type="submit" value="Submit" id="submitBtn">
+    </form>
+
+    <div id="tabletest">
+      <h2>List of claims</h2>
+        <div id="claimsList">
+          <table>
+
+            <thead>
+                <th>Claim Number</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Date</th>
+            </thead>
+
+            <div id="insertTD">
+            <tbody>
+            <!--
+              <% var one = "one"; %>
+              <% for (var i = 0; i < 5; i++) { %>
+                <tr>
+                  <% for (var j = 0; j < 5; j++) { %>
+                    <td><%= 3+1 %>, <%= j %></td>
+                  <% } %>
+                </tr>
+              <% } %>
+            -->
+            </tbody>
+            </div>
+            
+          </table>
+        </div>
+    </div>
+</div>
 
 </body>
 
