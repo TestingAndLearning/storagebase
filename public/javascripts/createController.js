@@ -36,8 +36,7 @@ $(document).ready(function()
         /** Retrieves information from firebase and displays in table. **/
         $("#claimsList tr").empty();    //clears all tr in #claimsList. 
         setTimeout(populateTable, 1000);    //Sets delay to 1000 milliseconds, if too fast then sometimes firebase does not get it fast enough. 
-
-        //event.preventDefault(); //Prevents form from refreshing. 
+        event.preventDefault(); //Prevents form from refreshing. 
     });
 
 });
