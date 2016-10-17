@@ -14,23 +14,25 @@ $(document).ready(function()
         var date = $("#date").val();
         var usersRef = firebase.database().ref("cases/").orderByKey();
 
-        usersRef.once('value', function(snapshot) 
+    usersRef.once('value', function(snapshot) 
+    {
+        if(!snapshot.hasChild(claimnumber))
         {
-          if (!snapshot.hasChild(claimnumber))
-          {
-                firebase.database().ref('cases/' + claimnumber).set(
-                {
-                    firstname: firstname,
-                    lastname: lastname,
-                    email : email,
-                    date : date
-                });
-          }
-          else
-          {
-            alert('exists');
-          }
+            firebase.database().ref('cases/' + claimnumber).set(
+        {
+            firstname: firstname,
+            lastname: lastname,
+            email : email,
+            date : date
         });
+        }
+        else
+        {
+            alert('error, already exists');
+        }
+    });
+
+
 
 
         /** Retrieves information from firebase and displays in table. **/
