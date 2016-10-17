@@ -31,7 +31,7 @@ $(document).ready(function()
         console.log("The read failed: " + errorObject.code);
     });
     **/
-
+/**
 // Loop through users in order with the forEach() method. The callback provided
 // to will be called synchronously with a DataSnapshot for each child:
 var query = firebase.database().ref("cases/").orderByKey();
@@ -55,9 +55,9 @@ query.once("value")
             '</tr>');
     });
 });
+**/
 
-
-
+populateTable();
     //Displayed list of claims. 
 
     //Stores form information into firebase. 
@@ -88,13 +88,50 @@ query.once("value")
     }, function (errorObject) {
       console.log("The read failed: " + errorObject.code);
     });
-
+        $("#claimsList tr").empty();    //clears all tr in #claimsList. 
+        populateTable();
         event.preventDefault(); //Prevents form from refreshing. 
     });
 
 });
 
+function populateTable ()
+{
+    $('#claimsList').append
+    ('<table>'+
+        '<thead>'+
+        '<th>'+ 'Claim Number' +'</th>'+
+        '<th>'+ 'First Name' +'</th>'+
+        '<th>'+ 'Last Name' +'</th>'+
+        '<th>'+ 'Email' + '</th>'+
+        '<th>'+ 'Date' + '</th>'+
+        '</thead>'+
+    '</table>');
 
+    // Loop through users in order with the forEach() method. The callback provided
+    // to will be called synchronously with a DataSnapshot for each child:
+    var query = firebase.database().ref("cases/").orderByKey();
+    query.once("value")
+      .then(function(snapshot) 
+        {
+            snapshot.forEach(function(childSnapshot) 
+            {
+              // key will be "ada" the first time and "alan" the second time
+              var key = childSnapshot.key;
+              // childData will be the actual contents of the child
+              var childData = childSnapshot.val();
+
+                    $('#claimsList tr:last').after
+                    ('<tr>'+
+                        '<td>'+ key +'</td>'+
+                        '<td>'+ childData["firstname"] +'</td>'+
+                        '<td>'+ childData["lastname"] +'</td>'+
+                        '<td>'+ childData["email"] + '</td>'+
+                        '<td>'+ childData["date"] +'</td>'+
+                    '</tr>');
+            });
+        });
+}
     /**
     $('#test123').click(function () {
         $('#test123').css("color", "yellow");
