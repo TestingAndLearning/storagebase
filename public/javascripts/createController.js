@@ -34,7 +34,7 @@ $(document).ready(function()
 
 // Loop through users in order with the forEach() method. The callback provided
 // to will be called synchronously with a DataSnapshot for each child:
-var query = firebase.database().ref("cases").orderByKey();
+var query = firebase.database().ref("cases/").orderByKey();
 query.once("value")
   .then(function(snapshot) 
   {
@@ -48,10 +48,10 @@ query.once("value")
             $('#claimsList tr:last').after
             ('<tr>'+
                 '<td>'+ key +'</td>'+
-                '<td>'+ childData +'</td>'+
-                '<td>'+'LNAME'+'</td>'+
-                '<td>'+'EMAIL'+'</td>'+
-                '<td>'+'DATE'+'</td>'+
+                '<td>'+ childData["firstname"] +'</td>'+
+                '<td>'+ childData["lastname"] +'</td>'+
+                '<td>'+ childData["email"] + '</td>'+
+                '<td>'+ childData["date"] +'</td>'+
             '</tr>');
     });
 });
