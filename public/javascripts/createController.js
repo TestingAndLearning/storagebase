@@ -1,6 +1,7 @@
 $(document).ready(function()
 {
     populateTable();
+    var repopulate = false;
 
     /** Saves new set of data.  **/
     $("#submitBtn").click(function(event)
@@ -14,31 +15,36 @@ $(document).ready(function()
         var date = $("#date").val();
         var usersRef = firebase.database().ref("cases/").orderByKey();
 
-    usersRef.once('value', function(snapshot) 
-    {
-        if(!snapshot.hasChild(claimnumber))
+        /** Checks for duplicates for claimnumber. **/
+        usersRef.once('value', function(snapshot) 
         {
-            firebase.database().ref('cases/' + claimnumber).set(
-        {
-            firstname: firstname,
-            lastname: lastname,
-            email : email,
-            date : date
+            if(!snapshot.hasChild(claimnumber))
+            {
+                populated = true;
+                firebase.database().ref('cases/' + claimnumber).set(
+                {
+                    firstname: firstname,
+                    lastname: lastname,
+                    email : email,
+                    date : date
+                });
+            }
+            else
+            {
+                repopulate = false;
+                alert('Claim number already exists. ');
+            }
         });
-        }
-        else
+
+        /** Displayed in table if not already loaded. **/
+        //TODO: Look into firebase.reload(); function. 
+        if (repopulate)
         {
-            alert('error, already exists');
+            repopulate = false;
+            $("#claimsList tr").empty();
+            setTimeout(populateTable, 1000);    //Sets delay to 1000 milliseconds, if too fast then sometimes firebase does not get it fast enough. 
+            event.preventDefault(); //Prevents form from refreshing. 
         }
-    });
-
-
-
-
-        /** Retrieves information from firebase and displays in table. **/
-        $("#claimsList tr").empty();    //clears all tr in #claimsList. 
-        setTimeout(populateTable, 1000);    //Sets delay to 1000 milliseconds, if too fast then sometimes firebase does not get it fast enough. 
-        event.preventDefault(); //Prevents form from refreshing. 
     });
 
 });
@@ -59,61 +65,21 @@ function populateTable ()
     // Loop through users in order with the forEach() method. The callback provided
     // to will be called synchronously with a DataSnapshot for each child:
     var query = firebase.database().ref("cases/").orderByKey();
-    query.once("value")
-      .then(function(snapshot) 
+    query.once("value").then(function(snapshot) 
         {
             snapshot.forEach(function(childSnapshot) 
             {
-              // key will be "ada" the first time and "alan" the second time
-              var key = childSnapshot.key;
-              // childData will be the actual contents of the child
-              var childData = childSnapshot.val();
+                var key = childSnapshot.key;
+                var childData = childSnapshot.val();
 
-                    $('#claimsList tr:last').after
-                    ('<tr>'+
-                        '<td>'+ key +'</td>'+
-                        '<td>'+ childData["firstname"] +'</td>'+
-                        '<td>'+ childData["lastname"] +'</td>'+
-                        '<td>'+ childData["email"] + '</td>'+
-                        '<td>'+ childData["date"] +'</td>'+
-                    '</tr>');
+                $('#claimsList tr:last').after
+                ('<tr>'+
+                    '<td>'+ key +'</td>'+
+                    '<td>'+ childData["firstname"] +'</td>'+
+                    '<td>'+ childData["lastname"] +'</td>'+
+                    '<td>'+ childData["email"] + '</td>'+
+                    '<td>'+ childData["date"] +'</td>'+
+                '</tr>');
             });
         });
 }
-
-
-/**
-        //Found under set data. 
-        // Get a database reference to our posts. 
-        var db = firebase.database();
-        var ref = db.ref("cases/");
-
-        // Attach an asynchronous callback to read the data at our posts reference
-        ref.on("value", function(snapshot) 
-        {
-          console.log(snapshot.val());
-          //test123.innerText = JSON.stringify(snapshot.val());
-        }, 
-        function (errorObject) 
-        {
-          console.log("The read failed: " + errorObject.code);
-        });
-**/
-
-    /**
-    document.getElementById('submitBtn2').addEventListener('click', function(event)
-    {
-    var claimnumber = $("#claimnumber").val();
-    var usersRef = firebase.database().ref("cases/").orderByKey();
-    usersRef.on('value', function(snapshot) 
-        {
-            if (!snapshot.hasChild(claimnumber)) 
-            {
-                alert("New")
-            }
-            else {
-                alert("That user already exists");
-            }
-        });
-    });
-    **/
