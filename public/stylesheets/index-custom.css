@@ -1,0 +1,23 @@
+.custom-wrapper
+{
+	width: 100%;
+	min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+}
+
+.center-buttons
+{
+	text-align: center;
+	width: 50%;
+	margin: auto;
+}
+
+div .btn-space
+{
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}

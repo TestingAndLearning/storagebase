@@ -1,22 +1,19 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/html">
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
+<head>
+    <title>Home</title>
+    <link rel='stylesheet' href='/stylesheets/index-custom.css' />
+</head>
 
-  <body>
-  <!-- <% include create.ejs %> -->
-  
-<br>
-    <div id="wrapper">
-      <h2>List of claims</h2>
-        <div id="claimsList">
-          <table>
-          <!--
-            This is where table is inserted by populateTable(); 
-          -->
-        </div>
+<body>
+<% include templates/navbar %>
+
+<div class="custom-wrapper textcenter">
+    <div class="center-buttons">
+        <a href="create" class="btn btn-success btn-lg btn-space">Create New Claim</a>
+        <a href="update" class="btn btn-success btn-lg btn-space">Update Claim Status</a>
     </div>
-  </body>
+</div>
+
+</body>
 </html>

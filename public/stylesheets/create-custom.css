@@ -1,0 +1,43 @@
+#pagewrapper
+{
+	width: 100%;
+	overflow: hidden;
+}
+
+.pageblock
+{
+	width: 50%;
+	margin-top: 8%;
+	margin-left: auto;
+	margin-right: auto;
+}
+#createform
+{
+
+}
+
+#left-cols
+{
+	display: inline-block;
+	width: 45%;
+	float: left;
+	margin-right: 10px;
+}
+
+#right-cols
+{
+	display: inline-block;
+	width: 45%;
+	float: right;
+	margin-left: 10px;
+}
+
+#submitBtn
+{
+	float: right;
+}
+
+#hidden-form
+{
+	visibility: hidden;
+}
