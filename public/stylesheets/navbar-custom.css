@@ -2,3 +2,10 @@
 {
 	border-radius: 0;
 }
+
+.brand-custom
+{
+	font-weight: bold;
+	font-size: 18px;
+	margin-left: -10px;
+}
