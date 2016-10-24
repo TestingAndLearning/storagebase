@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Login</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="card card-container">
+            <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+            <p id="profile-name" class="profile-name-card"></p>
+            <form class="form-signin">
+                <span id="reauth-user" class="reauth-user"></span>
+                <input type="text" id="company" class="form-control" placeholder="Company" required autofocus>
+                <input type="user" id="inputUser" class="form-control" placeholder="Username" required autofocus>
+                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm Password" required>
+
+                <button class="btn btn-lg btn-primary btn-block btn-signin" id="registerBtn" type="submit">Register</button>
+            </form><!-- /form -->
+            <!--
+            <a href="#" class="forgot-password">
+                Forgot the password?
+            </a>
+            -->
+        </div><!-- /card-container -->
+    </div><!-- /container -->
+
+<script src="https://www.gstatic.com/firebasejs/3.4.1/firebase.js"></script>
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyCBLiQRYc7EX4iMgqnWTf3H4WFjF4DfXfw",
+        authDomain: "usersite-11ad7.firebaseapp.com",
+        databaseURL: "https://usersite-11ad7.firebaseio.com",
+        storageBucket: "usersite-11ad7.appspot.com",
+        messagingSenderId: "968441130185"
+    };
+    firebase.initializeApp(config);
+</script>
+
+<script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+
+<script src="javascripts/jquery-3.1.1.min.js" type="text/javascript"></script>
+<link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
+<script src="javascripts/bootstrap.min.js" type="text/javascript"></script>
+<link rel='stylesheet' href='/stylesheets/register-custom.css' />
+<link rel='stylesheet' href='/stylesheets/style.css' />
+<script src="javascripts/registerController.js" type="text/javascript"></script>
+</body>
+</html>
