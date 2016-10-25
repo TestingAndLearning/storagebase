@@ -1,24 +1,3 @@
-    <script src="https://www.gstatic.com/firebasejs/3.4.1/firebase.js"></script>
-    <script>
-        // Initialize Firebase
-        var config = {
-            apiKey: "AIzaSyCBLiQRYc7EX4iMgqnWTf3H4WFjF4DfXfw",
-            authDomain: "usersite-11ad7.firebaseapp.com",
-            databaseURL: "https://usersite-11ad7.firebaseio.com",
-            storageBucket: "usersite-11ad7.appspot.com",
-            messagingSenderId: "968441130185"
-        };
-        firebase.initializeApp(config);
-    </script>
-
-    <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
-
-<script src="javascripts/jquery-3.1.1.min.js" type="text/javascript"></script>
-<link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
-<link rel='stylesheet' href='/stylesheets/bootstrap-theme.min.css' />
-<script src="javascripts/bootstrap.min.js" type="text/javascript"></script>
-<link rel='stylesheet' href='/stylesheets/navbar-custom.css' />
-<link rel='stylesheet' href='/stylesheets/style.css' />
 
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -41,13 +20,15 @@
           <a href="#" class="dropdown-toggle brand-custom" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Claims Tracker <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="index">Home</a></li>
-            <li><a href="create">Create New Claim</a></li>
+            <li><a href="create"> Create New Claim </a></li>
             <li><a href="update">Update Claim Status</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="#">Edit Existing Claim</a></li>
             <li><a href="#">Advanced Search</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="#">Anouncements</a></li>
+            <li role="separator" class="divider"></li>
+            <li id="logoutBtn"><a href="/register">Logout</a></li>
           </ul>
         </li>
 
@@ -63,6 +44,30 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+
+<script src="https://www.gstatic.com/firebasejs/3.4.1/firebase.js"></script>
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyCBLiQRYc7EX4iMgqnWTf3H4WFjF4DfXfw",
+        authDomain: "usersite-11ad7.firebaseapp.com",
+        databaseURL: "https://usersite-11ad7.firebaseio.com",
+        storageBucket: "usersite-11ad7.appspot.com",
+        messagingSenderId: "968441130185"
+    };
+    firebase.initializeApp(config);
+</script>
+
+<script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+
+<script src="javascripts/jquery-3.1.1.min.js" type="text/javascript"></script>
+<link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
+<link rel='stylesheet' href='/stylesheets/bootstrap-theme.min.css' />
+<script src="javascripts/bootstrap.min.js" type="text/javascript"></script>
+<link rel='stylesheet' href='/stylesheets/navbar-custom.css' />
+<link rel='stylesheet' href='/stylesheets/style.css' />
+<script src="javascripts/navbar-controller.js" type="text/javascript"></script>
+
 
 <script type="text/javascript">
     $(document).ready(function () {
