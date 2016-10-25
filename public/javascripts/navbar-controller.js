@@ -14,7 +14,7 @@ firebase.auth().onAuthStateChanged(firebaseUser =>
     else
     {
         console.log('not logged in');
-        window.location.replace("/");
+        window.location.replace("/login");
     }
 });
 

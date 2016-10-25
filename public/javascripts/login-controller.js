@@ -1,4 +1,4 @@
-var txtEmail = document.getElementById('inputUser');
+var txtEmail = document.getElementById('inputEmail');
 var txtPassword = document.getElementById('inputPassword');
 var signinBtn = document.getElementById('signinBtn');
 
@@ -12,14 +12,16 @@ signinBtn.addEventListener('click', e =>
 
 	promise.catch(e => console.log(e.message));
 	e.preventDefault();
-	    //Add realtime listener
+
 });
 
+//Add realtime listener
 firebase.auth().onAuthStateChanged(firebaseUser => 
 {
     if(firebaseUser)
     {
         console.log(firebaseUser);
+        window.location.replace("/");
     }
     else
     {
