@@ -5,12 +5,22 @@ $(document).ready(function()
     var firstname = $("#firstname").val();
     var lastname = $("#lastname").val();
     var email = $("#email").val();
+    var phone = $("#phone").val();
+    var address = $("#address").val();
     var date = $("#date").val();
+    var make = $("#make").val();
+    var model = $("#model").val();
+    var vin = $("#vin").val();
+    var plate = $("#plate").val();
+
+    var browseBtn = document.getElementById("browseBtn");
+    var uploadProgress = document.getElementById("uploadProgress");
+
     
-    populateTable();
+    //populateTable();
 
     /** Checks for duplicate claim number, then sets new data.   **/
-    $("#submitBtn").click(function(event)
+    $("#submitBtn").click(function(e)
     {
         getFormData();
         var usersRef = firebase.database().ref("cases/").orderByKey();
@@ -23,7 +33,13 @@ $(document).ready(function()
                     firstname: firstname,
                     lastname: lastname,
                     email : email,
-                    date : date
+                    phone : phone,
+                    address: address,
+                    date : date, 
+                    make : make, 
+                    model : model, 
+                    vin : vin, 
+                    plate: plate
                 });
             }
             else
@@ -31,7 +47,32 @@ $(document).ready(function()
                 alert('Claim number already exists. ');
             }
         });
-        event.preventDefault();
+        e.preventDefault();
+    });
+
+    //Max file size 10mb?
+    browseBtn.addEventListener("change", function(e)
+    {
+        var file = e.target.files[0];
+        var storageRef = firebase.storage().ref("car_pictures/" + file.name);
+
+        //For progress bar
+        var task = storageRef.put(file);
+        task.on("state_changed", 
+            function progress(snapshot)
+            {
+                var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                uploadProgress.value = percentage;
+            }, 
+            function error(err)
+            {
+
+            }, 
+            function complete()
+            {
+
+            }
+        );
     });
 
 });
@@ -39,12 +80,11 @@ $(document).ready(function()
 function getFormData()
 {
     claimnumber = $("#claimnumber").val();
-    firstname = $("#firstname").val();
-    lastname = $("#lastname").val();
-    email = $("#email").val();
-    date = $("#date").val();
+    //Add others later if not working. 
 }
 
+
+/**
 function populateTable()
 {
     appendTableHeaders();
@@ -83,6 +123,7 @@ function appendTableHeaders()
         '</thead>'+
     '</table>');
 }
+**/
 
         /**
         if (repopulate)
