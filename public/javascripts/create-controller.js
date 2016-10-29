@@ -1,5 +1,6 @@
 $(document).ready(function()
 {
+    //TODO look for extension, check it. 
     //test123.innerText = claimnumber;
     var claimnumber = $("#claimnumber").val();
     var firstname = $("#firstname").val();
