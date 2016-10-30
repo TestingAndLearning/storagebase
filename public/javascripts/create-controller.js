@@ -14,7 +14,7 @@ $(document).ready(function()
     var vin = $("#vin").val();
     var plate = $("#plate").val();
 
-    var browseBtn = document.getElementById("browseBtn");
+    var file1 = document.getElementById("#file1");
     var uploadProgress = document.getElementById("uploadProgress");
 
     
@@ -51,6 +51,7 @@ $(document).ready(function()
         e.preventDefault();
     });
 
+/**
     //Max file size 10mb?
     browseBtn.addEventListener("change", function(e)
     {
@@ -75,7 +76,12 @@ $(document).ready(function()
             }
         );
     });
+**/
 
+    $("#file1").change(function()
+    {
+        readURL(this);
+    });
 });
 
 function getFormData()
@@ -83,6 +89,22 @@ function getFormData()
     claimnumber = $("#claimnumber").val();
     //Add others later if not working. 
 }
+
+function readURL(input) 
+{
+    if (input.files && input.files[0]) 
+    {
+        var reader = new FileReader();
+        
+        reader.onload = function (e) 
+        {
+            $('#img1').attr('src', e.target.result);
+        }
+        
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
 
 
 /**
