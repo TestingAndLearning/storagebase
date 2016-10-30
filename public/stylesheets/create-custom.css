@@ -54,3 +54,66 @@
 {
 	visibility: hidden;
 }
+
+#pictureGallery
+{
+	border: solid 1px black;
+	height: 400px;
+	clear: both;
+	padding-top: 20px;
+}
+
+.imgCell 
+{
+	display: inline-block;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.carImg:hover 
+{
+    border: 1px solid #777;
+}
+
+.carImg
+{
+    border: 1px solid #ccc;
+    width: 130px;
+    height: 130px;
+}
+
+.inputfile 
+{
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.inputfile + label 
+{
+    font-size: 1em;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover 
+{
+    
+}
+
+.inputfile + label 
+{
+	cursor: pointer; /* "hand" cursor */
+}
+
+.inputfile:focus + label  /* For keyboard nav? */
+{
+	outline: 1px dotted #000;
+	outline: -webkit-focus-ring-color auto 5px;
+}
