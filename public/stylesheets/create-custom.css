@@ -58,9 +58,10 @@
 #pictureGallery
 {
 	border: solid 1px black;
-	height: 400px;
+	height: 410px;
 	clear: both;
 	padding-top: 20px;
+	overflow: scroll;
 }
 
 .imgCell 
@@ -82,6 +83,12 @@
     border: 1px solid #ccc;
     width: 130px;
     height: 130px;
+}
+
+.imgNum
+{
+	max-width: 100%;
+	max-height: 100%;
 }
 
 .inputfile 
