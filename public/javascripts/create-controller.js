@@ -17,6 +17,13 @@ $(document).ready(function()
     var file1 = document.getElementById("#file1");
     var uploadProgress = document.getElementById("uploadProgress");
 
+    var img1 = document.getElementById("img1").src.split("/").pop();
+    var img2 = document.getElementById("img2").src.split("/").pop();
+
+
+
+    console.log(img1);
+
     
     //populateTable();
 
@@ -105,6 +112,16 @@ function readURL(input)
     }
 }
 
+function getImgURL()
+{
+    img1 = document.getElementById("img1").src.split("/").pop();
+    img2 = document.getElementById("img2").src.split("/").pop();
+}
+
+function hideImg(imgNum)
+{
+    imgNum.style.visibility = (visible ? 'visible' : 'hidden');
+}
 
 
 /**
