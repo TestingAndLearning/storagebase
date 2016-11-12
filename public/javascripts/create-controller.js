@@ -15,10 +15,20 @@ $(document).ready(function()
     var plate = $("#plate").val();
 
     var file1 = document.getElementById("#file1");
+    var file2 = document.getElementById("#file2");
+    var file3 = document.getElementById("#file3");
+    var file4 = document.getElementById("#file4");
     var uploadProgress = document.getElementById("uploadProgress");
+
+    var unavail1 = document.getElementById("#unavail1");
 
     var img1 = document.getElementById("img1").src.split("/").pop();
     var img2 = document.getElementById("img2").src.split("/").pop();
+    var img3 = document.getElementById("img3").src.split("/").pop();
+    var img4 = document.getElementById("img4").src.split("/").pop();
+
+    var file1;
+    var file2;
 
 
 
@@ -31,12 +41,17 @@ $(document).ready(function()
     $("#submitBtn").click(function(e)
     {
         getFormData();
+        //setData();
         var usersRef = firebase.database().ref("cases/").orderByKey();
         usersRef.once('value', function(snapshot) 
         {
+            var claimnumber = $("#claimnumber").val();
             if(!snapshot.hasChild(claimnumber))
             {
-                firebase.database().ref('cases/' + claimnumber).set(
+                //var storageRef = firebase.storage().ref("car_pictures/" + file1.name);
+                //var task = storageRef.put(file1);
+                console.log(claimnumber);
+                firebase.database().ref('cases/' + "019").set(
                 {
                     firstname: firstname,
                     lastname: lastname,
@@ -49,13 +64,14 @@ $(document).ready(function()
                     vin : vin, 
                     plate: plate
                 });
+                console.log("set");
             }
             else
             {
                 alert('Claim number already exists. ');
             }
         });
-        e.preventDefault();
+        //e.preventDefault();
     });
 
 /**
@@ -85,19 +101,71 @@ $(document).ready(function()
     });
 **/
 
-    $("#file1").change(function()
+    $("#file1").change(function(e)
     {
-        readURL(this);
+        readURL(this, "#img1", "#unavail1");
+        file1 = e.target.files[0];
+    });
+
+    $("#file2").change(function(e)
+    {
+        readURL(this, "#img2");
+        file2 = e.target.files[0];
+    });
+
+    $("#file3").change(function()
+    {
+        readURL(this, "#img3");
+    });
+
+    $("#file4").change(function()
+    {
+        readURL(this, "#img4");
     });
 });
 
 function getFormData()
 {
     claimnumber = $("#claimnumber").val();
+    //console.log(claimnumber);
     //Add others later if not working. 
 }
 
-function readURL(input) 
+function setData()
+{
+    var usersRef = firebase.database().ref("cases/").orderByKey();
+    usersRef.once('value', function(snapshot) 
+    {
+        var claimnumber = $("#claimnumber").val();
+        if(!snapshot.hasChild(claimnumber))
+        {
+            //var storageRef = firebase.storage().ref("car_pictures/" + file1.name);
+            //var task = storageRef.put(file1);
+            console.log(claimnumber);
+            firebase.database().ref('cases/' + "019").set(
+            {
+                firstname: firstname,
+                lastname: lastname,
+                email : email,
+                phone : phone,
+                address: address,
+                date : date, 
+                make : make, 
+                model : model, 
+                vin : vin, 
+                plate: plate
+            });
+            console.log("set");
+        }
+        else
+        {
+            alert('Claim number already exists. ');
+        }
+    });
+}
+
+//Changes the picture to preview uploaded picture. 
+function readURL(input, imgNum, unavailNum) 
 {
     if (input.files && input.files[0]) 
     {
@@ -105,10 +173,11 @@ function readURL(input)
         
         reader.onload = function (e) 
         {
-            $('#img1').attr('src', e.target.result);
+            $(imgNum).attr('src', e.target.result);
         }
         
         reader.readAsDataURL(input.files[0]);
+        hideImg(unavailNum);
     }
 }
 
@@ -116,13 +185,19 @@ function getImgURL()
 {
     img1 = document.getElementById("img1").src.split("/").pop();
     img2 = document.getElementById("img2").src.split("/").pop();
+    img3 = document.getElementById("img3").src.split("/").pop();
+    img4 = document.getElementById("img4").src.split("/").pop();
 }
 
-function hideImg(imgNum)
+function hideImg(unavailNum)
 {
-    imgNum.style.visibility = (visible ? 'visible' : 'hidden');
+    //$(unavailNum).style.visibility = (visible ? 'visible' : 'hidden');
 }
 
+function savePicture()
+{
+
+}
 
 /**
 function populateTable()
@@ -174,3 +249,6 @@ function appendTableHeaders()
             event.preventDefault(); //Prevents form from refreshing. 
         }
         **/
+
+
+
