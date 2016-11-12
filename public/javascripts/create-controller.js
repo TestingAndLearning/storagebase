@@ -51,7 +51,7 @@ $(document).ready(function()
                 //var storageRef = firebase.storage().ref("car_pictures/" + file1.name);
                 //var task = storageRef.put(file1);
                 console.log(claimnumber);
-                firebase.database().ref('cases/' + "019").set(
+                firebase.database().ref('cases/' + claimnumber).set(
                 {
                     firstname: firstname,
                     lastname: lastname,
