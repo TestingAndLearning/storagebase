@@ -1,15 +1,91 @@
 .custom-wrapper
 {
 	width: 100%;
-	min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
-	min-height: 100vh;
+	/*min-height: 100%;*/  /* Fallback for browsers do NOT support vh unit */
+	/*min-height: 100vh;*/
 	display: flex;
 	align-items: center;
+	margin-top: 100px;
 }
 
 .center-buttons
 {
+	border: 1px solid black;
 	text-align: center;
-	width: 50%;
+	/* width: 50%; */
 	margin: auto;
+}
+
+#infoWrap
+{
+	width: 100%;
+	/*min-height: 100%;*/  /* Fallback for browsers do NOT support vh unit */
+	/*min-height: 100vh;*/
+	display: flex;
+	align-items: center;
+	margin-top: 25px;
+	border: 1px solid black;
+}
+
+#claimInfo
+{
+	text-align: center;
+	border: 1px solid black;
+	margin: auto;
+	padding: 10px;
+	width: 75%;
+}
+
+.adv-wrapper
+{
+	width: 100%;
+	/*min-height: 100%;*/  /* Fallback for browsers do NOT support vh unit */
+	/*min-height: 100vh;*/
+	display: flex;
+	align-items: center;
+	margin-top: 5px;
+}
+
+.center-adv
+{
+	/* width: 50%; */
+	margin: auto;
+}
+
+#adv-search
+{
+	float: left;
+}
+
+#left-cols
+{
+	text-align: left;
+	display: inline-block;
+	width: 45%;
+	float: left;
+	margin-right: 10px;
+}
+
+#right-cols
+{
+	text-align: left;
+	display: inline-block;
+	width: 45%;
+	float: right;
+	margin-left: 10px;
+}
+
+#hidden-form
+{
+	visibility: hidden;
+}
+
+#submitBtn
+{
+	float: right;
+}
+
+.uneditable
+{
+
 }

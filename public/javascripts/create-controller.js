@@ -32,12 +32,50 @@ $(document).ready(function()
 
 
 
-    console.log(img1);
+    //console.log(img1);
 
     
+    $("#submitBtn").click(function() 
+    {
+        getFormData(function() 
+        {
+            var usersRef = firebase.database().ref("cases/").orderByKey();
+            usersRef.once('value', function(snapshot) 
+            {
+                var claimnumber = $("#claimnumber").val();
+                if(!snapshot.hasChild(claimnumber))
+                {
+                    //var storageRef = firebase.storage().ref("car_pictures/" + file1.name);
+                    //var task = storageRef.put(file1);
+                    console.log(claimnumber);
+                    firebase.database().ref('cases/' + claimnumber).set(
+                    {
+                        firstname: firstname,
+                        lastname: lastname,
+                        email : email,
+                        phone : phone,
+                        address: address,
+                        date : date, 
+                        make : make, 
+                        model : model, 
+                        vin : vin, 
+                        plate: plate
+                    });
+                    console.log("set");
+                }
+                else
+                {
+                    alert('Claim number already exists. ');
+                }
+            });
+        });
+    });
+
+
     //populateTable();
 
     /** Checks for duplicate claim number, then sets new data.   **/
+    /**
     $("#submitBtn").click(function(e)
     {
         getFormData();
@@ -73,6 +111,7 @@ $(document).ready(function()
         });
         //e.preventDefault();
     });
+    **/
 
 /**
     //Max file size 10mb?
@@ -124,9 +163,16 @@ $(document).ready(function()
     });
 });
 
-function getFormData()
+function test1(value, callback)
+{
+    console.log(value);
+    callback();
+}
+
+function getFormData(callback)
 {
     claimnumber = $("#claimnumber").val();
+    callback();
     //console.log(claimnumber);
     //Add others later if not working. 
 }
