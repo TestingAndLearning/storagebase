@@ -57,6 +57,11 @@
 	float: left;
 }
 
+#createform
+{
+	margin-top: 20px;
+}
+
 #left-cols
 {
 	text-align: left;
@@ -88,4 +93,35 @@
 .uneditable
 {
 
+}
+
+#progress-bar
+{
+	border: 1px solid black;
+	height: 15px;
+	width: 150px;
+	margin-left: auto;
+	margin-right: auto;
+	display: flex;
+}
+
+#barwrapper
+{
+
+}
+
+#p0
+{
+	background-color: red;
+	color: red;
+	height: 100%;
+	width: 20%;
+}
+
+#p20
+{
+	background-color: orange;
+	color: red;
+	height: 100%;
+	width: 20%;
 }
