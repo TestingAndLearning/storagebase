@@ -16,7 +16,7 @@ $(document).ready(function()
 		});
 	});
 
-
+ 	$('[data-toggle="tooltip"]').tooltip(); 
 
 /**
     var query = firebase.database().ref("cases/").orderByKey();

@@ -98,11 +98,12 @@
 #progress-bar
 {
 	border: 1px solid black;
-	height: 15px;
-	width: 150px;
+	height: 30px;
+	width: 300px;
 	margin-left: auto;
 	margin-right: auto;
 	display: flex;
+	margin-top: 20px;
 }
 
 #barwrapper
@@ -110,18 +111,87 @@
 
 }
 
-#p0
+.pclass
 {
-	background-color: red;
-	color: red;
 	height: 100%;
 	width: 20%;
 }
 
 #p20
 {
+	background-color: red;
+	color: red;
+}
+
+#p40
+{
 	background-color: orange;
 	color: red;
-	height: 100%;
-	width: 20%;
+}
+
+#p60
+{
+	background-color: yellow;
+	color: red;
+}
+
+#p80
+{
+	background-color: chartreuse;
+	color: red;
+}
+
+#p100
+{
+	background-color: lime;
+	color: red;
+}
+
+#p20:hover
+{
+	border: 2px black solid;
+}
+
+#p40:hover
+{
+	border: 2px black solid;
+}
+
+#p60:hover
+{
+	border: 2px black solid;
+}
+
+#p80:hover
+{
+	border: 2px black solid;
+}
+
+#p100:hover
+{
+	border: 2px black solid;
+}
+
+.toparrow
+{
+	width: 0; 
+  	height: 0; 
+  	border-left: 10px solid transparent;
+  	border-right: 10px solid transparent;
+  	border-bottom: 10px solid black;
+  	margin-top: 40px;
+  	margin-left: auto;
+  	margin-right: auto;
+}
+
+.botarrow
+{
+	width: 0; 
+  	height: 0; 
+  	border-left: 10px solid transparent;
+  	border-right: 10px solid transparent;
+  	border-top: 10px solid black;
+  	margin-top: -70px;
+  	margin-left: auto;
+  	margin-right: auto;
 }
