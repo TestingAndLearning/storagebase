@@ -43,7 +43,7 @@ $(document).ready(function()
             usersRef.once('value', function(snapshot) 
             {
                 var claimnumber = $("#claimnumber").val();
-                if(!snapshot.hasChild(claimnumber))
+                if(!snapshot.child(claimnumber).exists())
                 {
                     //var storageRef = firebase.storage().ref("car_pictures/" + file1.name);
                     //var task = storageRef.put(file1);

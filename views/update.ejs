@@ -26,13 +26,24 @@
 
 <div id="infoWrap">
 	<div id="claimInfo">
+    <div><strong>Progress</strong></div>
             <div id="progress-bar">
 				
-					<div id="p20" class="pclass" data-toggle="tooltip" title="Your claim is currently pending. "></div>
-					<div id="p40" class="pclass" data-toggle="tooltip" title="Your claim has been approved. Your vehicle is being prepared for repairs. "></div>
-                    <div id="p60" class="pclass" data-toggle="tooltip" title="Your vehicle is currently being repaired. "></div>
-                    <div id="p80" class="pclass" data-toggle="tooltip" title="The repairs have been finished. We are currently finalizing the paperwork. "></div>
-                    <div id="p100" class="pclass" data-toggle="tooltip" title="Your vehicle is ready for pickup!"><div class="toparrow"></div></div>
+					<div id="p20" class="pclass" data-toggle="tooltip" title="Your claim is currently pending. ">
+                        <div class="toparrow" id="a20"></div>
+                    </div>
+					<div id="p40" class="pclass" data-toggle="tooltip" title="Your claim has been approved. Your vehicle is being prepared for repairs. ">
+                        <div class="toparrow" id="a40"></div>
+                    </div>
+                    <div id="p60" class="pclass" data-toggle="tooltip" title="Your vehicle is currently being repaired. ">
+                        <div class="toparrow" id="a60"></div>
+                    </div>
+                    <div id="p80" class="pclass" data-toggle="tooltip" title="The repairs have been finished. We are currently finalizing the paperwork. ">
+                        <div class="toparrow" id="a80"></div>
+                    </div>
+                    <div id="p100" class="pclass" data-toggle="tooltip" title="Your vehicle is ready for pickup!">
+                        <div class="toparrow" id="a100"></div>
+                    </div>
 				
             </div>
 
@@ -40,22 +51,22 @@
 
                 <div id="left-cols">
                     <strong>Claim Number:</strong><br>
-                    <input class="form-control" id="claimnumber" type="text" name="claimnumber"><br><br>
-                    First Name / Last Name<br>
-                    <input class="form-control" id="firstname" type="text" name="firstname"><br><br>
-                    Email / Phone:<br>
-                    <input class="form-control" id="email" type="text" name="email"><br><br>
+                    <input class="form-control" id="claimnumber" type="text" name="claimnumber" readonly><br><br>
+                    First Name and Last Name<br>
+                    <input class="form-control" id="firstname" type="text" name="firstname" readonly><br><br>
+                    Email and Phone:<br>
+                    <input class="form-control" id="email" type="text" name="email" readonly><br><br>
                 </div>
 
                 <div id="right-cols">
                     <br>
-                    <input class="form-control" id="hidden-form" type="none" name="hidden"><br><br>
+                    <input class="form-control" id="hidden-form" type="none" name="hidden" readonly><br><br>
                     Date:<br>
-                    <input class="form-control" id="date" type="text" name="date"><br><br>
+                    <input class="form-control" id="date" type="text" name="date" readonly><br><br>
                     Vehicle Make / Model / License Plate:<br>
-                    <input class="form-control" id="make" type="text" name="make"><br><br>
+                    <input class="form-control" id="make" type="text" name="make" readonly><br><br>
 
-                    <div class="btn btn-success btn-md" type="submit" value="Submit" id="submitBtn">Update</div>
+                    <div class="btn btn-info btn-md" type="submit" value="Submit" id="submitBtn" readonly>Update</div>
                 </div>
 
             </form>	</div>

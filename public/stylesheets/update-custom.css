@@ -59,7 +59,7 @@
 
 #createform
 {
-	margin-top: 20px;
+	margin-top: 50px;
 }
 
 #left-cols
@@ -97,13 +97,17 @@
 
 #progress-bar
 {
-	border: 1px solid black;
-	height: 30px;
+	border: 2px solid black;
+	height: 35px;
 	width: 300px;
 	margin-left: auto;
 	margin-right: auto;
 	display: flex;
 	margin-top: 20px;
+	border-radius: 20px;
+	background: -moz-linear-gradient(top, #4c4c4c 0%, #595959 20%, #474747 40%, #2b2b2b 60%, #1c1c1c 80%, #131313 100%);
+	background: -webkit-linear-gradient(top, #4c4c4c 0%, #595959 20%, #474747 40%, #2b2b2b 60%, #1c1c1c 80%, #131313 100%);
+	background: linear-gradient(to bottom, #4c4c4c 0%, #595959 20%, #474747 40%, #2b2b2b 60%, #1c1c1c 80%, #131313 100%);
 }
 
 #barwrapper
@@ -119,32 +123,46 @@
 
 #p20
 {
-	background-color: red;
-	color: red;
+	background: -moz-linear-gradient(left, #00047f 0%, #1f569e 100%);
+	background: -webkit-linear-gradient(left, #00047f 0%, #1f569e 100%);
+	background: linear-gradient(to right, #00047f 0%, #1f569e 100%);
+	color: black;
+	border-top-left-radius: 20px;
+	border-bottom-left-radius: 20px;
 }
 
 #p40
 {
-	background-color: orange;
-	color: red;
+	background: -moz-linear-gradient(left, #1f569e 0%, #3b5fcc 100%);
+	background: -webkit-linear-gradient(left, #1f569e 0%, #3b5fcc 100%);
+	background: linear-gradient(to right, #1f569e 0%, #3b5fcc 100%);
+	color: black;
 }
 
 #p60
 {
-	background-color: yellow;
-	color: red;
+	background: -moz-linear-gradient(left, #3b5fcc 0%, #219dce 100%);
+	background: -webkit-linear-gradient(left, #3b5fcc 0%, #219dce 100%);
+	background: linear-gradient(to right, #3b5fcc 0%, #219dce 100%);
+	color: black;
 }
 
 #p80
 {
-	background-color: chartreuse;
-	color: red;
+	background: -moz-linear-gradient(left, #219dce 0%, #26a6c9 100%);
+	background: -webkit-linear-gradient(left, #219dce 0%, #26a6c9 100%);
+	background: linear-gradient(to right, #219dce 0%, #26a6c9 100%);
+	color: black;
 }
 
 #p100
 {
-	background-color: lime;
-	color: red;
+	background: -moz-linear-gradient(left, #26a6c9 0%, #45ccd8 100%);
+	background: -webkit-linear-gradient(left, #26a6c9 0%, #45ccd8 100%);
+	background: linear-gradient(to right, #26a6c9 0%, #45ccd8 100%);
+	color: black;
+	border-top-right-radius: 20px;
+	border-bottom-right-radius: 20px;
 }
 
 #p20:hover
@@ -170,6 +188,7 @@
 #p100:hover
 {
 	border: 2px black solid;
+	visibility: hidden;
 }
 
 .toparrow
@@ -194,4 +213,29 @@
   	margin-top: -70px;
   	margin-left: auto;
   	margin-right: auto;
+}
+
+#a20
+{
+	visibility: hidden;
+}
+
+#a40
+{
+	visibility: hidden;
+}
+
+#a60
+{
+	visibility: hidden;
+}
+
+#a80
+{
+	visibility: hidden;
+}
+
+#a100
+{
+	visibility: hidden;
 }

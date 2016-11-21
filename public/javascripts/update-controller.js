@@ -2,16 +2,33 @@ $(document).ready(function()
 {
 	var queriedclaim;
 	var searchVal = $("#searchBar").val();
-	console.log(searchVal);
+
+	var firstname;
+	var lastname;
+	var email;
+	var phone;
+	var date;
+	var make;
+	var model;
+	var plate;
 
 
 	$("#searchBtn").click(function() 
 	{
-		getClaim(function()
+		getInput(function()
 		{
 			searchClaim(function()
 			{
-				getHash();
+				getHash(function()
+				{
+					getClaim(function()
+					{
+						displayClaim(function()
+						{
+							stopLoad();
+						});
+					});
+				});
 			});
 		});
 	});
@@ -35,7 +52,7 @@ $(document).ready(function()
 
 });
 
-function getClaim(callback)
+function getInput(callback)
 {
 	console.log("1");
 	searchVal = $("#searchBar").val();
@@ -50,8 +67,53 @@ function searchClaim(callback)
 	callback();
 }
 
-function getHash()
+function getHash(callback)
 {
 	queriedclaim = window.location.href.toString().split("#").pop();
 	console.log(queriedclaim);
+	callback();
+}
+
+function getClaim(callback)
+{
+		var query = firebase.database().ref("cases/" + searchVal).orderByKey();
+
+		query.once("value").then(function(snapshot) 
+		{
+			if(snapshot.exists())
+			{
+				firstname = snapshot.child("firstname").val();
+				lastname = snapshot.child("lastname").val();
+				email = snapshot.child("email").val();
+				phone = snapshot.child("phone").val();
+
+				date = snapshot.child("date").val();
+				make = snapshot.child("make").val();
+				model = snapshot.child("model").val();
+				plate = snapshot.child("plate").val();
+
+				callback();
+			}
+			else
+			{
+				alert("Claim number not found. ");
+			}
+
+		});
+}
+
+function displayClaim(callback)
+{
+	$('input[name="claimnumber"]').val(searchVal);
+	$('input[name="firstname"]').val(firstname + " " + lastname);
+	$('input[name="email"]').val(email + " " + phone);
+	$('input[name="date"]').val(date);
+	$('input[name="make"]').val(make + " / " + model + " / " + plate);
+	callback();
+}
+
+function stopLoad()
+{
+	searchVal = null;
+	console.log("stopping loading");
 }
