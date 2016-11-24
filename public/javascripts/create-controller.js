@@ -172,6 +172,16 @@ function test1(value, callback)
 function getFormData(callback)
 {
     claimnumber = $("#claimnumber").val();
+    firstname = $("#firstname").val();
+    lastname = $("#lastname").val();
+    email = $("#email").val();
+    phone = $("#phone").val();
+    address = $("#address").val();
+    date = $("#date").val();
+    make = $("#make").val();
+    model = $("#model").val();
+    vin = $("#vin").val();
+    plate = $("#plate").val();
     callback();
     //console.log(claimnumber);
     //Add others later if not working. 
