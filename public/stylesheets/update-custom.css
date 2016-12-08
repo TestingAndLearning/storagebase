@@ -98,7 +98,7 @@
 #progress-bar
 {
 	border: 2px solid black;
-	height: 35px;
+	height: 15px;
 	width: 300px;
 	margin-left: auto;
 	margin-right: auto;
@@ -121,6 +121,40 @@
 	width: 20%;
 }
 
+#p20
+{
+	background-color: lime;
+	color: black;
+	border-top-left-radius: 20px;
+	border-bottom-left-radius: 20px;
+}
+
+#p40
+{
+	background-color: lime;
+	color: black;
+}
+
+#p60
+{
+	background-color: lime;
+	color: black;
+}
+
+#p80
+{
+	background-color: lime;
+	color: black;
+}
+
+#p100
+{
+	background-color: lime;
+	color: black;
+	border-top-right-radius: 20px;
+	border-bottom-right-radius: 20px;
+}
+/**
 #p20
 {
 	background: -moz-linear-gradient(left, #00047f 0%, #1f569e 100%);
@@ -165,30 +199,36 @@
 	border-bottom-right-radius: 20px;
 }
 
+*/
+
 #p20:hover
 {
-	border: 2px black solid;
+	/* border: 1px black solid; */
+	background-color: greenyellow;
 }
 
 #p40:hover
 {
-	border: 2px black solid;
+	/* border: 1px black solid; */
+	background-color: greenyellow;
 }
 
 #p60:hover
 {
-	border: 2px black solid;
+	/* border: 1px black solid; */
+	background-color: greenyellow;
 }
 
 #p80:hover
 {
-	border: 2px black solid;
+	/* border: 1px black solid; */
+	background-color: greenyellow;
 }
 
 #p100:hover
 {
-	border: 2px black solid;
-	visibility: hidden;
+	/* border: 1px black solid; */
+	background-color: greenyellow;
 }
 
 .toparrow
