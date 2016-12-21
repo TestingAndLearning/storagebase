@@ -51,6 +51,25 @@ $(document).ready(function()
     });
 **/
 
+	$("#updateBtn").click(function() 
+    {
+    	console.log("Clicked");
+        var usersRef = firebase.database().ref("cases/").orderByKey();
+        usersRef.once('value', function(snapshot) 
+        {
+            var claimnumber = $("#claimnumber").val();
+            var progressindex = document.getElementById("progress");
+			var selectedindex = progressindex.options[progressindex.selectedIndex].value;
+
+            firebase.database().ref('cases/' + claimnumber).update(
+            {
+                progress: selectedindex                        
+            });
+            console.log("set");
+        });
+
+    });
+
 });
 
 function getInput(callback)
@@ -96,19 +115,19 @@ function getClaim(callback)
 
 				switch (progress)
 				{
-					case 20:
+					case "20":
 						p20();
 						break;
-					case 40:
+					case "40":
 						p40();
 						break;
-					case 60:
+					case "60":
 						p60();
 						break;
-					case 80:
+					case "80":
 						p80();
 						break;
-					case 100:
+					case "100":
 						p100();
 						break;
 				}
@@ -121,6 +140,7 @@ function getClaim(callback)
 			}
 
 		});
+
 }
 
 function displayClaim(callback)
