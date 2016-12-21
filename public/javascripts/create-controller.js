@@ -13,6 +13,7 @@ $(document).ready(function()
     var model = $("#model").val();
     var vin = $("#vin").val();
     var plate = $("#plate").val();
+    var progress = $("#progress").val();
 
     var file1 = document.getElementById("#file1");
     var file2 = document.getElementById("#file2");
@@ -43,6 +44,19 @@ $(document).ready(function()
             usersRef.once('value', function(snapshot) 
             {
                 var claimnumber = $("#claimnumber").val();
+                var claimnumber = $("#claimnumber").val();
+                var firstname = $("#firstname").val();
+                var lastname = $("#lastname").val();
+                var email = $("#email").val();
+                var phone = $("#phone").val();
+                var address = $("#address").val();
+                var date = $("#date").val();
+                var make = $("#make").val();
+                var model = $("#model").val();
+                var vin = $("#vin").val();
+                var plate = $("#plate").val();
+                var progress = $("#progress").val();
+
                 if(!snapshot.child(claimnumber).exists())
                 {
                     //var storageRef = firebase.storage().ref("car_pictures/" + file1.name);
@@ -59,9 +73,11 @@ $(document).ready(function()
                         make : make, 
                         model : model, 
                         vin : vin, 
-                        plate: plate
+                        plate: plate, 
+                        progress: progress                        
                     });
                     console.log("set");
+                    console.log(progress);
                 }
                 else
                 {
@@ -182,6 +198,7 @@ function getFormData(callback)
     model = $("#model").val();
     vin = $("#vin").val();
     plate = $("#plate").val();
+    //progress = $("#progress").val();
     callback();
     //console.log(claimnumber);
     //Add others later if not working. 
@@ -198,7 +215,7 @@ function setData()
             //var storageRef = firebase.storage().ref("car_pictures/" + file1.name);
             //var task = storageRef.put(file1);
             console.log(claimnumber);
-            firebase.database().ref('cases/' + "019").set(
+            firebase.database().ref('cases/' + claimnumber).set(
             {
                 firstname: firstname,
                 lastname: lastname,
@@ -209,7 +226,8 @@ function setData()
                 make : make, 
                 model : model, 
                 vin : vin, 
-                plate: plate
+                plate: plate, 
+                progress: progress
             });
             console.log("set");
         }

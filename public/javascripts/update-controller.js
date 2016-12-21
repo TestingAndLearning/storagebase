@@ -11,6 +11,7 @@ $(document).ready(function()
 	var make;
 	var model;
 	var plate;
+	var progress;
 
 
 	$("#searchBtn").click(function() 
@@ -91,6 +92,26 @@ function getClaim(callback)
 				make = snapshot.child("make").val();
 				model = snapshot.child("model").val();
 				plate = snapshot.child("plate").val();
+				progress = snapshot.child("progress").val();
+
+				switch (progress)
+				{
+					case 20:
+						p20();
+						break;
+					case 40:
+						p40();
+						break;
+					case 60:
+						p60();
+						break;
+					case 80:
+						p80();
+						break;
+					case 100:
+						p100();
+						break;
+				}
 
 				callback();
 			}
@@ -109,6 +130,7 @@ function displayClaim(callback)
 	$('input[name="email"]').val(email + " " + phone);
 	$('input[name="date"]').val(date);
 	$('input[name="make"]').val(make + " / " + model + " / " + plate);
+	document.getElementById('progress').value = progress;
 	callback();
 }
 
@@ -116,4 +138,49 @@ function stopLoad()
 {
 	searchVal = null;
 	console.log("stopping loading");
+}
+
+function p20()
+{
+	document.getElementById("p20").style.visibility = 'visible';
+	document.getElementById("p40").style.visibility = 'hidden';
+	document.getElementById("p60").style.visibility = 'hidden';
+	document.getElementById("p80").style.visibility = 'hidden';
+	document.getElementById("p100").style.visibility = 'hidden';
+}
+
+function p40()
+{
+	document.getElementById("p20").style.visibility = 'visible';
+	document.getElementById("p40").style.visibility = 'visible';
+	document.getElementById("p60").style.visibility = 'hidden';
+	document.getElementById("p80").style.visibility = 'hidden';
+	document.getElementById("p100").style.visibility = 'hidden';
+}
+
+function p60()
+{
+	document.getElementById("p20").style.visibility = 'visible';
+	document.getElementById("p40").style.visibility = 'visible';
+	document.getElementById("p60").style.visibility = 'visible';
+	document.getElementById("p80").style.visibility = 'hidden';
+	document.getElementById("p100").style.visibility = 'hidden';
+}
+
+function p80()
+{
+	document.getElementById("p20").style.visibility = 'visible';
+	document.getElementById("p40").style.visibility = 'visible';
+	document.getElementById("p60").style.visibility = 'visible';
+	document.getElementById("p80").style.visibility = 'visible';
+	document.getElementById("p100").style.visibility = 'hidden';
+}
+
+function p100()
+{
+	document.getElementById("p20").style.visibility = 'visible';
+	document.getElementById("p40").style.visibility = 'visible';
+	document.getElementById("p60").style.visibility = 'visible';
+	document.getElementById("p80").style.visibility = 'visible';
+	document.getElementById("p100").style.visibility = 'visible';
 }

@@ -123,36 +123,41 @@
 
 #p20
 {
-	background-color: lime;
+	background-color: deepskyblue;
 	color: black;
 	border-top-left-radius: 20px;
 	border-bottom-left-radius: 20px;
+	visibility: hidden;
 }
 
 #p40
 {
-	background-color: lime;
+	background-color: deepskyblue;
 	color: black;
+	visibility: hidden;
 }
 
 #p60
 {
-	background-color: lime;
+	background-color: deepskyblue;
 	color: black;
+	visibility: hidden;
 }
 
 #p80
 {
-	background-color: lime;
+	background-color: deepskyblue;
 	color: black;
+	visibility: hidden;
 }
 
 #p100
 {
-	background-color: lime;
+	background-color: deepskyblue;
 	color: black;
 	border-top-right-radius: 20px;
 	border-bottom-right-radius: 20px;
+	visibility: hidden;
 }
 /**
 #p20
@@ -204,31 +209,31 @@
 #p20:hover
 {
 	/* border: 1px black solid; */
-	background-color: greenyellow;
+	background-color: darkturquoise;
 }
 
 #p40:hover
 {
 	/* border: 1px black solid; */
-	background-color: greenyellow;
+	background-color: darkturquoise;
 }
 
 #p60:hover
 {
 	/* border: 1px black solid; */
-	background-color: greenyellow;
+	background-color: darkturquoise;
 }
 
 #p80:hover
 {
 	/* border: 1px black solid; */
-	background-color: greenyellow;
+	background-color: darkturquoise;
 }
 
 #p100:hover
 {
 	/* border: 1px black solid; */
-	background-color: greenyellow;
+	background-color: darkturquoise;
 }
 
 .toparrow

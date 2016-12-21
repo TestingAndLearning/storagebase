@@ -30,8 +30,14 @@
                 </div>
 
                 <div id="right-cols">
-                    <br>
-                    <input class="form-control" id="hidden-form" type="none" name="hidden"><br><br>
+                    Progress:<br>
+                    <select class="selectpicker" id="progress" name="progress">
+                      <option value="20">Claim is pending. </option>
+                      <option value="40">Claim Approved, preparing for repairs. </option>
+                      <option value="60">Vehicle is being repaired. </option>
+                      <option value="80">Repairs are finished. Finishing paperwork. </option>
+                      <option value="100">Ready for pickup. </option>
+                    </select><br><br>
                     Date:<br>
                     <input class="form-control" id="date" type="text" name="date"><br><br>
                     Vehicle Make:<br>
@@ -43,7 +49,7 @@
                     License Plate:<br>
                     <input class="form-control" id="plate" type="text" name="plate"><br><br>
 
-                    <div class="btn btn-success btn-md" type="submit" value="Submit" id="submitBtn">Create</div>
+                    
                 </div>
 
             </form>
@@ -125,6 +131,9 @@
             </div>
 
             </div>
+
+            <br><br>
+            <div class="btn btn-success btn-md" type="submit" value="Submit" id="submitBtn">Create</div>
 
         </div>
 
