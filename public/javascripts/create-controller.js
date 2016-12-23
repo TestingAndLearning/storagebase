@@ -15,10 +15,17 @@ $(document).ready(function()
     var plate = $("#plate").val();
     var progress = $("#progress").val();
 
+    /*
     var file1 = document.getElementById("#file1");
     var file2 = document.getElementById("#file2");
     var file3 = document.getElementById("#file3");
     var file4 = document.getElementById("#file4");
+
+    var file5 = document.getElementById("#file1");
+    var file6 = document.getElementById("#file2");
+    var file7 = document.getElementById("#file3");
+    var file8 = document.getElementById("#file4");
+    */
     var uploadProgress = document.getElementById("uploadProgress");
 
     var unavail1 = document.getElementById("#unavail1");
@@ -28,9 +35,19 @@ $(document).ready(function()
     var img3 = document.getElementById("img3").src.split("/").pop();
     var img4 = document.getElementById("img4").src.split("/").pop();
 
+    var img1 = document.getElementById("img5").src.split("/").pop();
+    var img2 = document.getElementById("img6").src.split("/").pop();
+    var img3 = document.getElementById("img7").src.split("/").pop();
+    var img4 = document.getElementById("img8").src.split("/").pop();
+
     var file1;
     var file2;
-
+    var file3;
+    var file4;
+    var file5;
+    var file6;
+    var file7;
+    var file8;
 
 
     //console.log(img1);
@@ -156,26 +173,57 @@ $(document).ready(function()
     });
 **/
 
-    $("#file1").change(function(e)
+    $("#file1").change(function(callback)
     {
         readURL(this, "#img1", "#unavail1");
-        file1 = e.target.files[0];
+        //file1 = e.target.files[0];
+        file1 = document.getElementById("myFile");
+        claimnumber = $("#claimnumber").val();
     });
 
     $("#file2").change(function(e)
     {
         readURL(this, "#img2");
-        file2 = e.target.files[0];
+        //file2 = e.target.files[0];
+        claimnumber = $("#claimnumber").val();
     });
 
     $("#file3").change(function()
     {
         readURL(this, "#img3");
+        claimnumber = $("#claimnumber").val();
     });
 
     $("#file4").change(function()
     {
         readURL(this, "#img4");
+        claimnumber = $("#claimnumber").val();
+    });
+
+    $("#file5").change(function(e)
+    {
+        readURL(this, "#img5", "#unavail1");
+        file1 = e.target.files[0];
+        claimnumber = $("#claimnumber").val();
+    });
+
+    $("#file6").change(function(e)
+    {
+        readURL(this, "#img6");
+        file2 = e.target.files[0];
+        claimnumber = $("#claimnumber").val();
+    });
+
+    $("#file7").change(function()
+    {
+        readURL(this, "#img7");
+        claimnumber = $("#claimnumber").val();
+    });
+
+    $("#file8").change(function()
+    {
+        readURL(this, "#img8");
+        claimnumber = $("#claimnumber").val();
     });
 });
 
@@ -271,6 +319,12 @@ function hideImg(unavailNum)
 function savePicture()
 {
 
+}
+
+function uploadPics(file)
+{
+    var storageRef = firebase.storage().ref(claimnumber + '/' + file.name)
+    storageRef.put(file);
 }
 
 /**
