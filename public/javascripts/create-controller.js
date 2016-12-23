@@ -1,7 +1,5 @@
 $(document).ready(function()
 {
-    //TODO look for extension, check it. 
-    //test123.innerText = claimnumber;
     var claimnumber = $("#claimnumber").val();
     var firstname = $("#firstname").val();
     var lastname = $("#lastname").val();
@@ -24,10 +22,10 @@ $(document).ready(function()
     var img3 = document.getElementById("img3").src.split("/").pop();
     var img4 = document.getElementById("img4").src.split("/").pop();
 
-    var img1 = document.getElementById("img5").src.split("/").pop();
-    var img2 = document.getElementById("img6").src.split("/").pop();
-    var img3 = document.getElementById("img7").src.split("/").pop();
-    var img4 = document.getElementById("img8").src.split("/").pop();
+    var img5 = document.getElementById("img5").src.split("/").pop();
+    var img6 = document.getElementById("img6").src.split("/").pop();
+    var img7 = document.getElementById("img7").src.split("/").pop();
+    var img8 = document.getElementById("img8").src.split("/").pop();
 
     var file1;
     var file2;
@@ -39,7 +37,6 @@ $(document).ready(function()
     var file8;
 
 
-    //console.log(img1);
 
     
     $("#submitBtn").click(function() 
@@ -65,7 +62,6 @@ $(document).ready(function()
 
                 if(!snapshot.child(claimnumber).exists())
                 {
-                    console.log(claimnumber);
                     firebase.database().ref('cases/' + claimnumber).set(
                     {
                         firstname: firstname,
@@ -80,10 +76,9 @@ $(document).ready(function()
                         plate: plate, 
                         progress: progress                        
                     });
-                    console.log("set");
-                    console.log(progress);
+                    console.log("Created");
                     uploadPics();
-                    console.log("uploading");
+                    console.log("Uploading");
                 }
                 else
                 {
@@ -94,87 +89,16 @@ $(document).ready(function()
     });
 
 
-    //populateTable();
-
-    /** Checks for duplicate claim number, then sets new data.   **/
-    /**
-    $("#submitBtn").click(function(e)
-    {
-        getFormData();
-        //setData();
-        var usersRef = firebase.database().ref("cases/").orderByKey();
-        usersRef.once('value', function(snapshot) 
-        {
-            var claimnumber = $("#claimnumber").val();
-            if(!snapshot.hasChild(claimnumber))
-            {
-                //var storageRef = firebase.storage().ref("car_pictures/" + file1.name);
-                //var task = storageRef.put(file1);
-                console.log(claimnumber);
-                firebase.database().ref('cases/' + claimnumber).set(
-                {
-                    firstname: firstname,
-                    lastname: lastname,
-                    email : email,
-                    phone : phone,
-                    address: address,
-                    date : date, 
-                    make : make, 
-                    model : model, 
-                    vin : vin, 
-                    plate: plate
-                });
-                console.log("set");
-            }
-            else
-            {
-                alert('Claim number already exists. ');
-            }
-        });
-        //e.preventDefault();
-    });
-    **/
-
-/**
-    //Max file size 10mb?
-    browseBtn.addEventListener("change", function(e)
-    {
-        var file = e.target.files[0];
-        var storageRef = firebase.storage().ref("car_pictures/" + file.name);
-
-        //For progress bar
-        var task = storageRef.put(file);
-        task.on("state_changed", 
-            function progress(snapshot)
-            {
-                var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                uploadProgress.value = percentage;
-            }, 
-            function error(err)
-            {
-
-            }, 
-            function complete()
-            {
-
-            }
-        );
-    });
-**/
-
     $("#file1").change(function(e)
     {
         readURL(this, "#img1");
-        //file1 = e.target.files[0];
         file1 = document.getElementById("file1").files[0];
-        //file1 = document.getElementById("file1");
         claimnumber = $("#claimnumber").val();
     });
 
     $("#file2").change(function(e)
     {
         readURL(this, "#img2");
-        //file2 = e.target.files[0];
         file2 = document.getElementById("file2").files[0];
         claimnumber = $("#claimnumber").val();
     });
@@ -241,10 +165,7 @@ function getFormData(callback)
     model = $("#model").val();
     vin = $("#vin").val();
     plate = $("#plate").val();
-    //progress = $("#progress").val();
     callback();
-    //console.log(claimnumber);
-    //Add others later if not working. 
 }
 
 function setData()
@@ -255,8 +176,6 @@ function setData()
         var claimnumber = $("#claimnumber").val();
         if(!snapshot.hasChild(claimnumber))
         {
-            //var storageRef = firebase.storage().ref("car_pictures/" + file1.name);
-            //var task = storageRef.put(file1);
             console.log(claimnumber);
             firebase.database().ref('cases/' + claimnumber).set(
             {
@@ -294,7 +213,6 @@ function readURL(input, imgNum)
         }
         
         reader.readAsDataURL(input.files[0]);
-        //hideImg(unavailNum);
     }
 }
 
@@ -322,8 +240,6 @@ function savePicture()
 
 function uploadPics()
 {
-    //var storageRef = firebase.storage().ref(claimnumber + '/' + file.name)
-    //storageRef.put(document.getElementById("file1"));
     if (document.getElementById("file1").files[0] != null)
     {
         firebase.storage().ref(claimnumber + '/' + document.getElementById("file1").name).put(document.getElementById("file1").files[0]);
@@ -365,57 +281,3 @@ function uploadPics()
     }
 
 }
-
-/**
-function populateTable()
-{
-    appendTableHeaders();
-    // Loop through users in order with the forEach() method. The callback provided
-    // to will be called synchronously with a DataSnapshot for each child:
-    var query = firebase.database().ref("cases/").orderByKey();
-    query.once("value").then(function(snapshot) 
-        {
-            snapshot.forEach(function(childSnapshot) 
-            {
-                var key = childSnapshot.key;
-                var childData = childSnapshot.val();
-
-                $('#claimsList tr:last').after
-                ('<tr>'+
-                    '<td>'+ key +'</td>'+
-                    '<td>'+ childData["firstname"] +'</td>'+
-                    '<td>'+ childData["lastname"] +'</td>'+
-                    '<td>'+ childData["email"] + '</td>'+
-                    '<td>'+ childData["date"] +'</td>'+
-                '</tr>');
-            });
-        });
-}
-
-function appendTableHeaders()
-{
-    $('#claimsList').append
-    ('<table>'+
-        '<thead>'+
-        '<th>'+ 'Claim Number' +'</th>'+
-        '<th>'+ 'First Name' +'</th>'+
-        '<th>'+ 'Last Name' +'</th>'+
-        '<th>'+ 'Email' + '</th>'+
-        '<th>'+ 'Date' + '</th>'+
-        '</thead>'+
-    '</table>');
-}
-**/
-
-        /**
-        if (repopulate)
-        {
-            repopulate = false;
-            $("#claimsList tr").empty();
-            setTimeout(populateTable, 1000);    //Sets delay to 1000 milliseconds, if too fast then sometimes firebase does not get it fast enough. 
-            event.preventDefault(); //Prevents form from refreshing. 
-        }
-        **/
-
-
-
