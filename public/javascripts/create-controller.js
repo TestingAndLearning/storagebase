@@ -15,17 +15,6 @@ $(document).ready(function()
     var plate = $("#plate").val();
     var progress = $("#progress").val();
 
-    /*
-    var file1 = document.getElementById("#file1");
-    var file2 = document.getElementById("#file2");
-    var file3 = document.getElementById("#file3");
-    var file4 = document.getElementById("#file4");
-
-    var file5 = document.getElementById("#file1");
-    var file6 = document.getElementById("#file2");
-    var file7 = document.getElementById("#file3");
-    var file8 = document.getElementById("#file4");
-    */
     var uploadProgress = document.getElementById("uploadProgress");
 
     var unavail1 = document.getElementById("#unavail1");
@@ -76,8 +65,6 @@ $(document).ready(function()
 
                 if(!snapshot.child(claimnumber).exists())
                 {
-                    //var storageRef = firebase.storage().ref("car_pictures/" + file1.name);
-                    //var task = storageRef.put(file1);
                     console.log(claimnumber);
                     firebase.database().ref('cases/' + claimnumber).set(
                     {
@@ -95,6 +82,8 @@ $(document).ready(function()
                     });
                     console.log("set");
                     console.log(progress);
+                    uploadPics();
+                    console.log("uploading");
                 }
                 else
                 {
@@ -173,11 +162,12 @@ $(document).ready(function()
     });
 **/
 
-    $("#file1").change(function(callback)
+    $("#file1").change(function(e)
     {
-        readURL(this, "#img1", "#unavail1");
+        readURL(this, "#img1");
         //file1 = e.target.files[0];
-        file1 = document.getElementById("myFile");
+        file1 = document.getElementById("file1").files[0];
+        //file1 = document.getElementById("file1");
         claimnumber = $("#claimnumber").val();
     });
 
@@ -185,45 +175,50 @@ $(document).ready(function()
     {
         readURL(this, "#img2");
         //file2 = e.target.files[0];
+        file2 = document.getElementById("file2").files[0];
         claimnumber = $("#claimnumber").val();
     });
 
-    $("#file3").change(function()
+    $("#file3").change(function(e)
     {
         readURL(this, "#img3");
         claimnumber = $("#claimnumber").val();
+        file3 = document.getElementById("file3").files[0];
     });
 
-    $("#file4").change(function()
+    $("#file4").change(function(e)
     {
         readURL(this, "#img4");
         claimnumber = $("#claimnumber").val();
+        file4 = document.getElementById("file4").files[0];
     });
 
     $("#file5").change(function(e)
     {
-        readURL(this, "#img5", "#unavail1");
-        file1 = e.target.files[0];
+        readURL(this, "#img5");
+        file5 = document.getElementById("file5").files[0];
         claimnumber = $("#claimnumber").val();
     });
 
     $("#file6").change(function(e)
     {
         readURL(this, "#img6");
-        file2 = e.target.files[0];
+        file6 = document.getElementById("file6").files[0];
         claimnumber = $("#claimnumber").val();
     });
 
-    $("#file7").change(function()
+    $("#file7").change(function(e)
     {
         readURL(this, "#img7");
         claimnumber = $("#claimnumber").val();
+        file7 = document.getElementById("file7").files[0];
     });
 
-    $("#file8").change(function()
+    $("#file8").change(function(e)
     {
         readURL(this, "#img8");
         claimnumber = $("#claimnumber").val();
+        file8 = document.getElementById("file8").files[0];
     });
 });
 
@@ -287,7 +282,7 @@ function setData()
 }
 
 //Changes the picture to preview uploaded picture. 
-function readURL(input, imgNum, unavailNum) 
+function readURL(input, imgNum) 
 {
     if (input.files && input.files[0]) 
     {
@@ -299,7 +294,7 @@ function readURL(input, imgNum, unavailNum)
         }
         
         reader.readAsDataURL(input.files[0]);
-        hideImg(unavailNum);
+        //hideImg(unavailNum);
     }
 }
 
@@ -309,6 +304,10 @@ function getImgURL()
     img2 = document.getElementById("img2").src.split("/").pop();
     img3 = document.getElementById("img3").src.split("/").pop();
     img4 = document.getElementById("img4").src.split("/").pop();
+    img5 = document.getElementById("img5").src.split("/").pop();
+    img6 = document.getElementById("img6").src.split("/").pop();
+    img7 = document.getElementById("img7").src.split("/").pop();
+    img8 = document.getElementById("img8").src.split("/").pop();
 }
 
 function hideImg(unavailNum)
@@ -321,10 +320,50 @@ function savePicture()
 
 }
 
-function uploadPics(file)
+function uploadPics()
 {
-    var storageRef = firebase.storage().ref(claimnumber + '/' + file.name)
-    storageRef.put(file);
+    //var storageRef = firebase.storage().ref(claimnumber + '/' + file.name)
+    //storageRef.put(document.getElementById("file1"));
+    if (document.getElementById("file1").files[0] != null)
+    {
+        firebase.storage().ref(claimnumber + '/' + document.getElementById("file1").name).put(document.getElementById("file1").files[0]);
+    }
+
+    if (document.getElementById("file2").files[0] != null)
+    {
+        firebase.storage().ref(claimnumber + '/' + document.getElementById("file2").name).put(document.getElementById("file2").files[0]);
+    }
+
+    if (document.getElementById("file3").files[0] != null)
+    {
+        firebase.storage().ref(claimnumber + '/' + document.getElementById("file3").name).put(document.getElementById("file3").files[0]);
+    }
+
+    if (document.getElementById("file4").files[0] != null)
+    {
+        firebase.storage().ref(claimnumber + '/' + document.getElementById("file4").name).put(document.getElementById("file4").files[0]);
+    }
+
+    if (document.getElementById("file5").files[0] != null)
+    {
+        firebase.storage().ref(claimnumber + '/' + document.getElementById("file5").name).put(document.getElementById("file5").files[0]);
+    }
+
+    if (document.getElementById("file6").files[0] != null)
+    {
+        firebase.storage().ref(claimnumber + '/' + document.getElementById("file6").name).put(document.getElementById("file6").files[0]);
+    }
+
+    if (document.getElementById("file7").files[0] != null)
+    {
+        firebase.storage().ref(claimnumber + '/' + document.getElementById("file7").name).put(document.getElementById("file7").files[0]);
+    }
+
+    if (document.getElementById("file8").files[0] != null)
+    {
+        firebase.storage().ref(claimnumber + '/' + document.getElementById("file8").name).put(document.getElementById("file8").files[0]);
+    }
+
 }
 
 /**
